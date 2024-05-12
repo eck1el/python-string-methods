@@ -7,37 +7,49 @@
 class AnalizadorDeTexto:
 
     def __init__(self):
-        self.letras = []
-        self.texto = self.__solicitudTexto()
-        self.__solicitudCincoLetras()
-        self.__contamosAparicionLetras()
-        self.__contamosCuantasPalabras()
+        self.letters = []
+        self.text = self.__askingForLargeText()
+        self.__askingFor3Letters()
+        self.__countingLetters()
+        self.__countingWords()
         self.__showsFirstAndLastWord()
+        self.__reversingTextOrder()
+        self.getPythonWord()
 
-    def __solicitudTexto(self):
-        texto = input("Por favor ingresa un texto: ")
-        return texto
+    def __askingForLargeText(self):
+        text = input("Por favor ingresa un texto: ")
+        return text
 
-    def __solicitudCincoLetras(self):
+    def __askingFor3Letters(self):
 
-        print("Por favor ingrese tres letras a su elección para procesar la información")
+        print("Please give me three different letters for me to process the information")
         for i in range(0, 3):
-            letra = input("Por favor ingrese la letra {} para el analisis de texto: ".format((i+1)))
-            self.letras.append(letra)
+            letter = input("Could you please provide the letter {}: ".format((i+1)))
+            self.letters.append(letter)
 
-    def __contamosAparicionLetras(self):
+    def __countingLetters(self):
 
-        for i in range(0, len(self.letras)):
-            print("La letra {} aparece {} veces en el texto".format(self.letras[i], self.texto.upper().count(self.letras[i].upper())))
+        for i in range(0, len(self.letters)):
+            print("The letter '{}' appears {} times in this text".format(self.letters[i], self.text.upper().count(self.letters[i].upper())))
 
-    def __contamosCuantasPalabras(self):
-        countingWords = len(self.texto.split())
-        print ("El texto esta compuesto de {} palabra(s)".format(countingWords))
+    def __countingWords(self):
+        countingWords = len(self.text.split())
+        print ("The text consists of {} word(s).".format(countingWords))
 
     def __showsFirstAndLastWord(self):
-        first = self.texto[0]
-        last = self.texto[-1]
+        first = self.text[0]
+        last = self.text[-1]
         print("The first word is {} and the last one is {}".format(first, last))
+
+    def __reversingTextOrder(self):
+        text = self.text[::-1]
+        print("The reverse form of the text '{}' appears as follows '{}'".format(self.text, text))
+
+    def getPythonWord(self):
+        if(self.text.upper().find("PYTHON")):
+            print('Python appears in this text')
+        else:
+            print('Python doesnt appears')
 
 
 
